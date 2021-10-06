@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web Application</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h3 class="card-header alert text-left fs-1 fw-bolder text-white bg-warning text-uppercase border-indS">Weather Web Application</h3>
+            <div class="col">
+                <form>
+                    
+                    <div class="mb-3">
+                        <select class="form-select form-select-lg mb-3 text-center" name="countrylist" id="countrylist" class="form-select">
+                            
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select form-select-lg mb-3 text-center" name="statelist" id="statelist" class="form-select" disabled>
+                        <option value="">Select State</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select form-select-lg mb-3 text-center" name="citylist" id="citylist" class="form-select" disabled>
+                            <option value="">Select City</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="d-flax justify-content-center" id="weatherwidget">
+                    <div class="card alert text-center border-light">
+                        <div class="card-body">
+                            <h5 class="card-title fs-3 fst-italic">
+                                ---------
+                            </h5>
+                            <p class="fs-6">-----</p>
+                            <div class="tempcard">
+                                <h6 class="card-subtitle cel mb2">--</h6>
+                                <p class="card-text">--------</p>
+                            </div>
+                            <div class="img-container">
+                                <img src="..." id="img"/>
+                            </div>
+                            <p>--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>

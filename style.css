@@ -1,0 +1,77 @@
+body{
+    /* background-image: url(/img/img1.jpg); */
+    /* background-size: ; */
+    background: url(/img/img1.jpg) center center/cover;
+    /* background-origin: ; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*background: radial-gradient(circle, rgb(148, 102, 221) 100%,  hsl(230, 87%, 44%) 0%);*/
+    height: 100%;
+    min-height: 100%;
+}
+.container{
+    align-items: center;
+    margin-top: 5rem;
+    /*background: radial-gradient(circle, rgb(160, 136, 197) 0%,  hsl(202, 74%, 56%) 100%);*/
+    background: black;
+    opacity: 0.95;
+    border-radius: 10px;
+    box-shadow: 1px 2px 14px rgb(30, 33, 34);
+    max-width: 85%;
+    width: 100%;
+}
+ 
+#weatherwidget{
+    min-height: 100%;
+    border-radius: 5px;
+}
+
+.card{
+    width: 100%;
+    background-color: rgb(26, 22, 22);
+    color: white;
+}
+.card .card-subtitle{
+    font-size: 100px;
+}
+.card .cel::after{
+    content: "°C";
+    position: absolute;
+    font-size: 50px;
+    margin-top: 0.3rem;
+    font-weight: 400;
+}
+
+.card .cel::after{
+    content: "°C";
+    position: absolute;
+    font-size: 50px;
+    margin-top: 0.3rem;
+    font-weight: 400;
+}
+
+.card .far::after{
+    content: "°F";
+    position: absolute;
+    font-size: 50px;
+    margin-top: 0.3rem;
+    font-weight: 400;
+}
+
+.units a{
+    color: #666;
+    text-decoration: none;
+}
+
+.units a.active {
+    color: #ccc;
+}
+
+.form-select:hover{
+    background-color: rgb(240, 236, 228);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#img:hover{
+    background: grey;
+}
