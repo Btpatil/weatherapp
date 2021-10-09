@@ -32,7 +32,7 @@ body{
     color: white;
 }
 .card .card-subtitle{
-    font-size: 600%;
+    font-size: 500%;
 }
 .card .cel::after{
     content: "°C";
