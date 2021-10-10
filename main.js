@@ -12,15 +12,16 @@ const config = {
 document.addEventListener("DOMContentLoaded", async() => {
     let lon;
     let lat;
-
+    let units = "metric";
     if(navigator.geolocation)
     {
         navigator.geolocation.getCurrentPosition(async (position)=>
         {
             lon = position.coords.longitude;
             lat = position.coords.latitude;
+            
             // console.log(lon,lat );
-            const apiEndPoint = `${config.weatherurl}weather?lat=${lat}&lon=${lon}&appid=${config.weatherkey}`;
+            const apiEndPoint = `${config.weatherurl}weather?lat=${lat}&lon=${lon}&appid=${config.weatherkey}&units=${units}`;
 
             const response = await fetch(apiEndPoint);
             if(response.status != 200){
