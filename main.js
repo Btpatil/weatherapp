@@ -4,7 +4,7 @@ const config = {
     //statesurl : https://api.countrystatecity.in/v1/countries/[ciso]/states
     //cityeurl : https://api.countrystatecity.in/v1/countries/[ciso]/states/[siso]/cities
     countrykey : "eGxJdkxCSWtBcUxjMkRBQVpXcFZrSDk1dWZ6ekpQQ1UxRVh3bXRFeA==",
-    weatherurl : "http://api.openweathermap.org/data/2.5/",
+    weatherurl : "https://api.openweathermap.org/data/2.5/",
     weatherkey : "fd834ff020c870dba32a0a1d1ffbd4f6",
 };
 
