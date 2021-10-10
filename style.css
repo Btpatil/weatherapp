@@ -17,8 +17,8 @@ body{
     opacity: 0.95;
     border-radius: 10px;
     box-shadow: 1px 2px 14px rgb(30, 33, 34);
-    max-width: 85%;
-    width: 100%;
+    max-width: 1000px;
+    width: 95%;
 }
  
 #weatherwidget{
@@ -33,12 +33,15 @@ body{
 }
 .card .card-subtitle{
     font-size: 100px;
+    position: relative;
 }
 .card .cel::after{
     content: "°C";
     position: absolute;
-    font-size: 50px;
-    margin-top: 0.3rem;
+    font-size: 50px !important;
+    /* margin-top: 0.3rem; */
+    top: 0%;
+    margin-left: 5px;
     font-weight: 400;
 }
 
@@ -75,3 +78,12 @@ body{
 #img:hover{
     background: grey;
 }
+
+@media screen and (max-width: 480px) {
+    .card .card-subtitle {
+        font-size: 70px;
+    }
+    .card .cel::after {
+        font-size: 25px !important;
+    }
+  }

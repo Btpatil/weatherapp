@@ -91,18 +91,18 @@ const getDate = (unixTimeStamp) => {
 const displayWeather = (data) => {
     const weatherWidget = `<div class="card alert text-center">
     <div class="card-body">
-        <h5 class="card-title fs-3 fst-italic text-center">
+        <h5 class="card-title fs-1 fst-italic text-center">
             ${data.name}, ${data.sys.country}
         </h5>
-        <p class="fs-6">${getDate(data.dt)}</p>
+        <p class="fs-4">${getDate(data.dt)}</p>
         <div class="tempcard">
-            <h6 class="card-subtitle cel mb2">${data.main.temp}</h6>
-            <p class="card-text">Minimum: ${data.main.temp_min}°C Maximum:${data.main.temp_max}°C</p>
+            <h6 class="card-subtitle cel mb-2">${data.main.temp}</h6>
+            <p class="card-text fs-4 mt-2">Minimum: ${data.main.temp_min}°C Maximum: ${data.main.temp_max}°C</p>
         </div>
         ${data.weather.map(w => `<div class="img-container">
         <img src="http://openweathermap.org/img/wn/${w.icon}@2x.png" id="img"/>
     </div>
-    <p>${w.description}</p>`).join("<br/>")}
+    <p class="fs-4">${w.description}</p>`).join("<br/>")}
     </div>
 </div>`
 
