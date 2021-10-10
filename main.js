@@ -1,13 +1,40 @@
+//this is an object
 const config = {
     countryurl : "https://api.countrystatecity.in/v1/countries",
     //statesurl : https://api.countrystatecity.in/v1/countries/[ciso]/states
-    //citiesurl : https://api.countrystatecity.in/v1/countries/[ciso]/states/[siso]/cities
+    //cityeurl : https://api.countrystatecity.in/v1/countries/[ciso]/states/[siso]/cities
     countrykey : "eGxJdkxCSWtBcUxjMkRBQVpXcFZrSDk1dWZ6ekpQQ1UxRVh3bXRFeA==",
-    weatherurl : "https://api.openweathermap.org/data/2.5/",
+    weatherurl : "http://api.openweathermap.org/data/2.5/",
     weatherkey : "fd834ff020c870dba32a0a1d1ffbd4f6",
 };
 
-//fetching countries in selecy country //its a arrow function
+//getting location of user through GPS
+document.addEventListener("DOMContentLoaded", async() => {
+    let lon;
+    let lat;
+
+    if(navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(async (position)=>
+        {
+            lon = position.coords.longitude;
+            lat = position.coords.latitude;
+            // console.log(lon,lat );
+            const apiEndPoint = `${config.weatherurl}weather?lat=${lat}&lon=${lon}&appid=${config.weatherkey}`;
+
+            const response = await fetch(apiEndPoint);
+            if(response.status != 200){
+                
+                throw new Error(`Something went wrong, status code : ${response.status}`);
+            }
+            const weather = await response.json();
+            //console.log(response);
+            displayWeather(weather);
+            })
+        }
+})
+
+//fetching countries in select country //its an arrow function
 const getCountries = async (areaName, ...args) => {
     let apiEndPoint = config.countryurl;
     switch(areaName){
@@ -72,9 +99,9 @@ const displayWeather = (data) => {
             <p class="card-text">Minimum: ${data.main.temp_min}°C Maximum:${data.main.temp_max}°C</p>
         </div>
         ${data.weather.map(w => `<div class="img-container">
-        <img src="https://openweathermap.org/img/wn/${w.icon}@2x.png" id="img"/>
+        <img src="http://openweathermap.org/img/wn/${w.icon}@2x.png" id="img"/>
     </div>
-    <p>${w.description}</p>`).join("\n")}
+    <p>${w.description}</p>`).join("<br/>")}
     </div>
 </div>`
 
@@ -145,7 +172,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     }) 
 
 });
-
-
-//fd834ff020c870dba32a0a1d1ffbd4f6
-//eGxJdkxCSWtBcUxjMkRBQVpXcFZrSDk1dWZ6ekpQQ1UxRVh3bXRFeA==
