@@ -100,7 +100,7 @@ const displayWeather = (data) => {
             <p class="card-text fs-4 mt-2">Minimum: ${data.main.temp_min}°C Maximum: ${data.main.temp_max}°C</p>
         </div>
         ${data.weather.map(w => `<div class="img-container">
-        <img src="http://openweathermap.org/img/wn/${w.icon}@2x.png" id="img"/>
+        <img src="https://openweathermap.org/img/wn/${w.icon}@2x.png" id="img"/>
     </div>
     <p class="fs-4">${w.description}</p>`).join("<br/>")}
     </div>
