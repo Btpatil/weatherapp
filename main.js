@@ -146,13 +146,12 @@ const displayWeather = (data, data1) => {
     </div>`;
 
     let futureData = `
-    <div class="today" id="current-temp">
-        <div class="img">
-            <img src="http://openweathermap.org/img/wn/${data1.daily[0].weather[0].icon}@4x.png" alt="" class="w-icon">
-            ${data1.daily[0].weather[0].description}
-        </div>
+    <div class="weather-forecast" id="weather-forecast">
+    <div class="weather-forecast-item">
         <div class="other">
-            <div class="day">${getDay(data1.daily[0].dt)}</div><br>
+            <div class="day">Today</div>
+            <img src="http://openweathermap.org/img/wn/${data1.daily[0].weather[0].icon}@2x.png" alt="" class="w-icon">
+            ${data1.daily[0].weather[0].description}
             <div class="temp">Night - ${data1.daily[0].temp.night}°C</div>
             <div class="temp">day - ${data1.daily[0].temp.day}°C</div>
         </div> 
@@ -246,46 +245,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
-{/* <div class="weather-forecast" id="weather-forecast">
-    <div class="weather-forecast-item">
-        <div class="day">tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
-        <div class="temp">Night - 25°C</div>
-        <div class="temp">day - 25°C</div>
-    </div>
-
-    <div class="weather-forecast-item">
-        <div class="day">tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
-        <div class="temp">Night - 25°C</div>
-        <div class="temp">day - 25°C</div>
-    </div>
-
-    <div class="weather-forecast-item">
-        <div class="day">tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
-        <div class="temp">Night - 25°C</div>
-        <div class="temp">day - 25°C</div>
-    </div>
-
-    <div class="weather-forecast-item">
-        <div class="day">tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
-        <div class="temp">Night - 25°C</div>
-        <div class="temp">day - 25°C</div>
-    </div>
-
-    <div class="weather-forecast-item">
-        <div class="day">tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
-        <div class="temp">Night - 25°C</div>
-        <div class="temp">day - 25°C</div>
-    </div>
-
-    <div class="weather-forecast-item">
-        <div class="day">tue</div>
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
-        <div class="temp">Night - 25°C</div>
-        <div class="temp">day - 25°C</div>
-    </div>
-</div> */}
