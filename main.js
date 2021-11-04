@@ -5,7 +5,7 @@ const config = {
     //cityeurl : https://api.countrystatecity.in/v1/countries/[ciso]/states/[siso]/cities
     countrykey: "eGxJdkxCSWtBcUxjMkRBQVpXcFZrSDk1dWZ6ekpQQ1UxRVh3bXRFeA==",
     weatherurl: "https://api.openweathermap.org/data/2.5/",
-    onecallurl: "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=hourly,minutely&appid={API key}",
+    onecallurl: "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely&appid={API key}",
     weatherkey: "fd834ff020c870dba32a0a1d1ffbd4f6",
 };
 
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // console.log(lon,lat );
             const apiEndPoint = `${config.weatherurl}weather?lat=${lat}&lon=${lon}&appid=${config.weatherkey}&units=${units}`;
 
-            const apiEndPoint1 = `${config.weatherurl}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=${units}&appid=${config.weatherkey}`;
+            const apiEndPoint1 = `${config.weatherurl}onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=${units}&appid=${config.weatherkey}`;
 
             const response = await fetch(apiEndPoint);
             if (response.status != 200) {
@@ -127,6 +127,21 @@ const getDay = (unixTimeStamp) => {
     return date;
 };
 
+const getTime = (unixTimeStamp) => {
+    const milisec = unixTimeStamp * 1000;
+    const dateObj = new Date(milisec);
+    const options = {
+        weekday: "long",
+        //    year: "numeric",
+        // month: "numeric",
+        // day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+    };
+    const date = dateObj.toLocaleDateString('en-US', options);
+    return date;
+};
+
 const displayWeather = (data, data1) => {
     const weatherWidget = `<div class="card alert text-center border-light">
     <div class="card-body">
@@ -175,8 +190,27 @@ const displayWeather = (data, data1) => {
         } 
     </div>
     `;
-
+    
+    let newArr1 = data1.hourly;
+    future24Data = `
+    <div class="d-flex flex-row flex-nowrap overflow-auto" id="d1">
+        ${newArr1.map(obj => {
+        return `
+        <div class="card card-body" id="cb">
+            <div class="card-header">${getTime(obj.dt)}</div>
+            <div class="content">
+                <img src=" http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="" class="w-icon">
+                ${data1.daily[0].weather[0].description}
+                <p>${obj.feels_like} °C</p>  
+            </div>
+        </div>
+            `}).join(" ")
+        } 
+    </div>
+    `;
+    
     weatherdiv.innerHTML = weatherWidget;
+    fut24div.innerHTML = future24Data; 
     futurediv.innerHTML = futureData;
 }
 
@@ -185,6 +219,8 @@ const statesDropDownList = document.querySelector("#statelist");
 const citiesDropDownList = document.querySelector("#citylist");
 const weatherdiv = document.querySelector("#weatherwidget");
 const futurediv = document.querySelector("#future-forecast");
+const fut24div = document.querySelector("#nxt24");
+
 
 //calling above function
 document.addEventListener("DOMContentLoaded", async () => {
