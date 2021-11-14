@@ -128,7 +128,7 @@ body{
 }
 
 .nxt24 {
-    background: rgba(241, 243, 245, 0.9);
+    background: rgba(26, 25, 25, 0.9);
     padding: 15px;
     margin-top: 15px;
 }
@@ -144,7 +144,8 @@ body{
 
 #cb{
     border-radius: 10px;
-    background: #3c3c34;
+	border-color: black;
+    background: rgba(71, 65, 64,0.5);
     color: white;
     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
       transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
@@ -154,7 +155,7 @@ body{
 
 
 #cb:hover {
-    background-color: white;
+    background-color: grey;
     color: black;
     transform: scale(1.05);
     box-shadow: -5px 10px 20px #41464b, -1px 17px 10px #41464b;
