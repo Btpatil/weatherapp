@@ -110,7 +110,7 @@ const getDate = (unixTimeStamp) => {
         month: "long",
         day: "numeric",
     };
-    const date = dateObj.toLocaleDateString('en-US', options);
+    const date = dateObj.toLocaleDateString('en-IN', options);
     return date;
 };
 
@@ -123,7 +123,7 @@ const getDay = (unixTimeStamp) => {
         month: "numeric",
         day: "numeric",
     };
-    const date = dateObj.toLocaleDateString('en-US', options);
+    const date = dateObj.toLocaleDateString('en-IN', options);
     return date;
 };
 
@@ -138,7 +138,22 @@ const getTime = (unixTimeStamp) => {
         hour: "numeric",
         minute: "numeric",
     };
-    const date = dateObj.toLocaleDateString('en-US', options);
+    const date = dateObj.toLocaleDateString('en-IN', options);
+    return date;
+};
+
+const getTime1 = (unixTimeStamp) => {
+    const milisec = unixTimeStamp * 1000;
+    const dateObj = new Date(milisec);
+    const options = {
+        //weekday: "long",
+        //    year: "numeric",
+        // month: "numeric",
+        // day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+    };
+    const date = dateObj.toLocaleDateString('en-IN', options);
     return date;
 };
 
@@ -151,7 +166,8 @@ const displayWeather = (data, data1) => {
         <p class="fs-4">${getDate(data.dt)}</p>
         <div class="tempcard">
             <h6 class="card-subtitle cel mb-2">${data.main.temp}</h6>
-            <p class="card-text fs-4 mt-2">Minimum: ${data.main.temp_min}°C Maximum: ${data.main.temp_max}°C</p>
+            <p class="card-text fs-4 mt-2">Minimum: ${data.main.temp_min}°C &nbsp;&nbsp;&nbsp; Maximum: ${data.main.temp_max}°C</p>
+            <p class="card-text fs-4 mt-2">Humidity: ${data.main.humidity}%</p>
         </div>
         ${data.weather.map(w => `<div class="img-container">
         <img src="https://openweathermap.org/img/wn/${w.icon}@2x.png" id="img"/>
@@ -167,8 +183,9 @@ const displayWeather = (data, data1) => {
             <div class="day">Today</div>
             <img src="http://openweathermap.org/img/wn/${data1.daily[0].weather[0].icon}@2x.png" alt="" class="w-icon">
             ${data1.daily[0].weather[0].description}
-            <div class="temp">Night - ${data1.daily[0].temp.night}°C</div>
-            <div class="temp">day - ${data1.daily[0].temp.day}°C</div>
+            <div class="temp">Day - ${data1.daily[0].temp.day}°C &nbsp;&nbsp;&nbsp;&nbsp;   Sunrise - ${getTime1(data1.daily[0].sunrise).split(",")[1]}</div>
+            <div class="temp">Night - ${data1.daily[0].temp.night}°C &nbsp;&nbsp;&nbsp;&nbsp;   Sunset - ${getTime1(data1.daily[0].sunset).split(",")[1]}</div>
+            <div class="humid">Humidity - ${data1.daily[0].humidity}%</div>
         </div> 
     </div>
     `
@@ -182,8 +199,9 @@ const displayWeather = (data, data1) => {
                 <div class="day">${getDay(obj.dt)}</div>
                 <img src=" http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="" class="w-icon">
                 ${data1.daily[0].weather[0].description}
-                <div class="temp">Night - ${obj.temp.night}°C</div>
-                <div class="temp">day - ${obj.temp.day}°C</div>
+                <div class="temp">Day - ${obj.temp.day}°C   &nbsp;&nbsp;&nbsp;&nbsp;   Sunrise - ${getTime1(obj.sunrise).split(",")[1]}</div>
+                <div class="temp">Night - ${obj.temp.night}°C   &nbsp;&nbsp;&nbsp;&nbsp;   Sunset - ${getTime1(obj.sunset).split(",")[1]}</div>
+                <div class="humid">Humidity - ${obj.humidity}%</div>
             </div>
             </div>
             `}).join(" ")
