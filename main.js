@@ -90,14 +90,15 @@ const getWeather = async (city, countryCode, units = "metric") => {
     lat = weather.coord.lat;
     lon = weather.coord.lon;
 
-    const apiEndPoint1 = `${config.weatherurl}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=${units}&appid=${config.weatherkey}`;
+    const apiEndPoint1 = `${config.weatherurl}onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=${units}&appid=${config.weatherkey}`;
+    // console.log(apiEndPoint);
 
     const response1 = await fetch(apiEndPoint1);
     if (response1.status != 200) {
         throw new Error(`Something went wrong, status code : ${response1.status}`);
     }
     const weather1 = await response1.json();
-
+    // console.log(weather1);
     return [weather, weather1];
 };
 
@@ -158,6 +159,7 @@ const getTime1 = (unixTimeStamp) => {
 };
 
 const displayWeather = (data, data1) => {
+    // console.log(data1)
     const weatherWidget = `<div class="card alert text-center border-light">
     <div class="card-body">
         <h5 class="card-title fs-1 fst-italic text-center">
@@ -210,7 +212,7 @@ const displayWeather = (data, data1) => {
     `;
     
     let newArr1 = data1.hourly;
-    future24Data = `
+    futureData1 = `
     <div class="d-flex flex-row flex-nowrap overflow-auto" id="d1">
         ${newArr1.map(obj => {
         return `
@@ -218,7 +220,7 @@ const displayWeather = (data, data1) => {
             <div class="card-header">${getTime(obj.dt)}</div>
             <div class="content">
                 <img src=" http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="" class="w-icon">
-                ${data1.daily[0].weather[0].description}
+                ${obj.weather[0].description}
                 <p>${obj.feels_like} °C</p>  
             </div>
         </div>
@@ -228,7 +230,7 @@ const displayWeather = (data, data1) => {
     `;
     
     weatherdiv.innerHTML = weatherWidget;
-    fut24div.innerHTML = future24Data; 
+    fut24div.innerHTML = futureData1; 
     futurediv.innerHTML = futureData;
 }
 
